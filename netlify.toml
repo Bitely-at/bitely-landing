@@ -1,0 +1,11 @@
+[build]
+  command = "next build"
+  publish = ".next"
+
+[build.environment]
+  # Next 16 needs Node 20+; pin so a Netlify default change can't break the build.
+  NODE_VERSION = "22"
+
+# Gives the site server actions, route handlers and image handling on Netlify.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

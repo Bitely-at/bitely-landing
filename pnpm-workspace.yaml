@@ -1,0 +1,10 @@
+# msw ships a postinstall that copies a browser service worker. Nothing here
+# uses it, so its build script stays off — pnpm otherwise stops the install
+# and asks, which fails CI.
+allowBuilds:
+  msw: false
+
+# Windows darf ohne Developer Mode keine Symlinks anlegen, und @netlify/plugin-nextjs
+# kopiert node_modules samt Links in die Serverless-Funktion. Mit dem hoisted Linker
+# stehen dort echte Verzeichnisse, und der Deploy laeuft ohne Admin-Rechte durch.
+nodeLinker: hoisted

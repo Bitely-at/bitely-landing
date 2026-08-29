@@ -1,28 +1,49 @@
-# Bitely — Marketing Website
+# Bitely — Landingpage
 
-Single-page German-language marketing site for Bitely, a B2B SaaS product giving restaurant owners dish-level guest feedback via QR codes. Built with Next.js (App Router) and Tailwind CSS. No backend, no database — the interactive demo section uses hardcoded mock data. See [bitely-website-brief.md](./bitely-website-brief.md) for the full brief.
+Einseitige deutschsprachige Marketing-Website für Bitely, ein B2B-SaaS-Produkt, das
+Restaurants gerichtgenaues Gästefeedback per QR-Code liefert.
 
-## Development
+Dieses Repo enthält **nur die Landingpage**. Die eigentliche App hinter `bitely.at`
+liegt in einem separaten Repo und wird per Proxy eingebunden.
+
+Der vollständige inhaltliche Brief steht in [bitely-website-brief.md](./bitely-website-brief.md).
+
+## Stack
+
+- **Next.js 16** (App Router, React 19)
+- **Tailwind CSS 4** + shadcn-Komponenten (`components/ui`)
+- **Framer Motion** für Animationen
+- **pnpm** als Paketmanager
+- Deployment über **Netlify** (`@netlify/plugin-nextjs`, Node 22)
+
+## Entwicklung
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Läuft auf http://localhost:3000.
 
 ## Build
 
 ```bash
-npm run build
+pnpm build
 ```
 
-This produces a static export in `out/` (see `output: "export"` in [next.config.ts](./next.config.ts)).
+## Struktur
 
-## Deployment (GitHub Pages)
+| Pfad | Inhalt |
+|---|---|
+| `app/` | Layout, Seite und Server Action für das Demo-Formular |
+| `components/` | Sektionen der Landingpage (Hero, How it works, …) |
+| `components/ui/` | Wiederverwendbare UI-Bausteine |
+| `lib/` | Hilfsfunktionen und Demo-Request-Logik |
+| `public/` | Bilder, Logos, Icons |
 
-Deployment is automatic: every push to `main` triggers [.github/workflows/deploy.yml](./.github/workflows/deploy.yml), which builds the static export and publishes it to GitHub Pages.
+## Hinweise
 
-One-time setup in the GitHub repo settings: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-
-The site is served under `/bitely-landing/` (the repo name) via `basePath`/`assetPrefix` in `next.config.ts`, applied automatically when running in GitHub Actions.
+- `pnpm-workspace.yaml` setzt `nodeLinker: hoisted` — ohne das scheitert der Netlify-Build
+  unter Windows an Symlinks.
+- Das Demo-Formular nutzt eine Server Action, braucht also eine Server-Runtime.
+  Ein rein statischer Export (z. B. GitHub Pages) funktioniert damit nicht.
