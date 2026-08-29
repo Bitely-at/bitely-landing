@@ -9,3 +9,44 @@
 # Gives the site server actions, route handlers and image handling on Netlify.
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# --- Auffangnetz fuer die alte Domain-Aufteilung ---------------------------
+#
+# Bis zum Umzug lag die App unter bitely.at/:orgSlug/... und die Landingpage
+# wurde von dort per Proxy geholt. Jetzt ist es umgekehrt: bitely.at gehoert
+# dieser Site, die App liegt auf app.bitely.at.
+#
+# Gedruckte QR-Codes und gebookmarkte Logins tragen aber noch die alten
+# bitely.at-URLs. Diese Regeln leiten genau die Pfade weiter, die in freier
+# Wildbahn existieren koennen. Sie duerfen weg, sobald alle QR-Codes ersetzt
+# sind.
+#
+# Bewusst kein Catch-all `/*`: der wuerde auch kuenftige Unterseiten dieser
+# Landingpage (z. B. /impressum) an die App schicken, weil Next.js-Routen
+# Functions sind und keine statischen Dateien, gegen die Netlify zuerst prueft.
+#
+# 301 statt Proxy, damit der Gast die neue Adresse in der Leiste sieht und der
+# Browser sie beim naechsten Scan direkt ansteuert.
+
+# Aktuelle QR-Code-Route (mit Filiale).
+[[redirects]]
+  from = "/:orgSlug/:branchSlug/table/:tableNumber"
+  to = "https://app.bitely.at/:orgSlug/:branchSlug/table/:tableNumber"
+  status = 301
+
+# Aeltere QR-Code-Route ohne Filiale (App.tsx haelt sie weiterhin offen).
+[[redirects]]
+  from = "/:orgSlug/table/:tableNumber"
+  to = "https://app.bitely.at/:orgSlug/table/:tableNumber"
+  status = 301
+
+# Gebookmarkte Zugaenge fuer Personal und Betreiber.
+[[redirects]]
+  from = "/:orgSlug/staff"
+  to = "https://app.bitely.at/:orgSlug/staff"
+  status = 301
+
+[[redirects]]
+  from = "/:orgSlug/admin"
+  to = "https://app.bitely.at/:orgSlug/admin"
+  status = 301

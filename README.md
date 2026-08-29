@@ -3,8 +3,10 @@
 Einseitige deutschsprachige Marketing-Website für Bitely, ein B2B-SaaS-Produkt, das
 Restaurants gerichtgenaues Gästefeedback per QR-Code liefert.
 
-Dieses Repo enthält **nur die Landingpage**. Die eigentliche App hinter `bitely.at`
-liegt in einem separaten Repo und wird per Proxy eingebunden.
+Dieses Repo enthält **nur die Landingpage**. Sie läuft unter `bitely.at`.
+Die eigentliche App liegt in einem separaten Repo
+([`Bitely-at/Granular-Feedback`](https://github.com/Bitely-at/Granular-Feedback))
+und läuft unter `app.bitely.at`.
 
 Der vollständige inhaltliche Brief steht in [bitely-website-brief.md](./bitely-website-brief.md).
 
@@ -47,3 +49,6 @@ pnpm build
   unter Windows an Symlinks.
 - Das Demo-Formular nutzt eine Server Action, braucht also eine Server-Runtime.
   Ein rein statischer Export (z. B. GitHub Pages) funktioniert damit nicht.
+- Die 301-Regeln in `netlify.toml` fangen die alten `bitely.at`-Pfade gedruckter
+  QR-Codes ab und leiten sie auf `app.bitely.at`. Sie dürfen weg, sobald alle
+  QR-Codes im Umlauf ersetzt sind.
