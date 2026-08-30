@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils'
 export type PhotoCarouselItem = {
   /** Path under /public, e.g. '/images/app/01-scan.svg' */
   src: string
-  /** Describe what the screen shows — this is what screen readers announce. */
+  /** Describe what the screen shows. This is what screen readers announce. */
   alt: string
   /** Short line shown under the frame. */
   caption?: string
@@ -53,7 +53,7 @@ export function PhotoCarousel({
   const prev = React.useCallback(() => go(index - 1, -1), [go, index])
 
   /* Auto-advance, held while the guest is hovering, focused inside, or on
-     another tab — and skipped entirely when reduced motion is requested. */
+     another tab, and skipped entirely when reduced motion is requested. */
   React.useEffect(() => {
     if (!autoPlayMs || count < 2 || isPaused || prefersReducedMotion) return
 

@@ -3,7 +3,7 @@ import Image from 'next/image'
 const points = [
   {
     label: 'No account required',
-    body: 'Guests can leave dish-by-dish feedback the moment they scan — zero friction, zero sign-up wall.',
+    body: 'Guests can leave dish-by-dish feedback the moment they scan. Zero friction, zero sign-up wall.',
   },
   {
     label: 'Optional sign-in to bank points',
@@ -11,7 +11,7 @@ const points = [
   },
   {
     label: 'Instant, irreversible redemption',
-    body: 'Vouchers are redeemed on the spot — the guest shows a code and staff enter the payout. Done once, done for good.',
+    body: 'Vouchers are redeemed on the spot. The guest shows a code and staff enter the payout. Done once, done for good.',
   },
 ]
 

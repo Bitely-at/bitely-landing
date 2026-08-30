@@ -17,8 +17,8 @@ import { cn } from '@/lib/utils'
 
 const locationOptions = [
   { value: '1', label: 'A single location' },
-  { value: '2-5', label: '2–5 locations' },
-  { value: '6-20', label: '6–20 locations' },
+  { value: '2-5', label: '2 to 5 locations' },
+  { value: '6-20', label: '6 to 20 locations' },
   { value: '21+', label: '21+ locations' },
 ]
 
@@ -137,7 +137,7 @@ export function DemoForm() {
               <FieldError id="message-error">{errors.message}</FieldError>
             </Field>
 
-            {/* Honeypot — hidden from people, tempting to bots. */}
+            {/* Honeypot: hidden from people, tempting to bots. */}
             <div aria-hidden="true" className="hidden">
               <label htmlFor="company_website">Company website</label>
               <input

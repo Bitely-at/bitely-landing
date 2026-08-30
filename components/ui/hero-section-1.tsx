@@ -68,7 +68,7 @@ export function HeroSection() {
                                     href="#for-restaurants"
                                     className="group mx-auto flex w-fit items-center gap-4 rounded-full border bg-muted p-1 pl-4 shadow-md shadow-black/5 transition-all duration-300 hover:bg-background">
                                     <span className="text-foreground text-sm">
-                                        New — an AI recap of every dish, every Monday
+                                        New: an AI recap of every dish, every Monday
                                     </span>
                                     <span className="block h-4 w-0.5 border-l bg-background"></span>
 
@@ -192,7 +192,7 @@ export function HeroSection() {
 }
 
 /* Real product screenshots. Drop more PNGs into public/images/app/ and add
-   them here — the carousel grows arrows, dots and auto-advance on its own as
+   them here. The carousel grows arrows, dots and auto-advance on its own as
    soon as there is more than one. */
 const appScreens = [
     {
