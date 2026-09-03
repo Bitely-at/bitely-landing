@@ -6,7 +6,7 @@ const links = [
   { href: '#how-it-works', label: 'How it works' },
   { href: '#for-restaurants', label: 'For restaurants' },
   { href: '#demo', label: 'Demo' },
-  { href: 'mailto:hello@bitely.app', label: 'hello@bitely.app' },
+  { href: 'mailto:hello@bitely.at', label: 'hello@bitely.at' },
 ]
 
 export function SiteFooter() {
