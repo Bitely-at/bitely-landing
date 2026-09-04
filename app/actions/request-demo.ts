@@ -5,6 +5,7 @@ import type {
   DemoRequestValues,
 } from '@/lib/demo-request'
 import { LOCATION_OPTIONS } from '@/lib/demo-request'
+import { deliverDemoRequest } from '@/lib/demo-email'
 
 
 /* Deliberately permissive: the only job here is to catch typos like a missing
@@ -72,16 +73,23 @@ export async function requestDemo(
     }
   }
 
-  // TODO: Deliver the request somewhere durable before going live. Until this
-  // is wired up, submissions only reach the server log and are then lost.
-  // Options, cheapest first:
-  //   - email:    Resend / Postmark to the sales inbox
-  //   - database: a `demo_requests` table
-  //   - CRM:      a webhook into HubSpot, Pipedrive, …
-  console.info('[bitely] demo request received', {
-    ...values,
-    receivedAt: new Date().toISOString(),
-  })
+  const delivery = await deliverDemoRequest(values)
+
+  if (!delivery.ok) {
+    // Keep the lead in the server log so it is not lost while delivery is broken,
+    // and surface a path the visitor can act on instead of a dead end.
+    console.error('[bitely] demo request delivery failed', {
+      reason: delivery.reason,
+      ...values,
+      receivedAt: new Date().toISOString(),
+    })
+    return {
+      status: 'error',
+      message:
+        'Something went wrong sending your request. Please try again in a moment.',
+      values,
+    }
+  }
 
   return {
     status: 'success',
