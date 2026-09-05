@@ -9,7 +9,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Bitely: Feedback on every dish, not just the meal',
+  title: 'Bitely: Feedback on every dish not just the meal',
   description:
     'Bitely lets restaurant guests scan a QR code, rate individual dishes, and earn loyalty points, while owners get live per-dish ratings and AI weekly insights. Request a demo.',
   generator: 'v0.app',

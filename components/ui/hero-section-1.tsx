@@ -85,7 +85,7 @@ export function HeroSection() {
                                 </Link>
 
                                 <h1 className="mx-auto mt-8 max-w-4xl text-balance text-5xl font-medium tracking-tight md:text-6xl lg:mt-16 xl:text-7xl">
-                                    Feedback on every dish, not just the meal.
+                                    Feedback on every dish not just the meal.
                                 </h1>
                                 <p className="mx-auto mt-8 max-w-2xl text-pretty text-lg leading-relaxed text-muted-foreground">
                                     Guests scan a QR code at the table, rate each dish they

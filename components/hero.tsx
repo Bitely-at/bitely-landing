@@ -30,7 +30,7 @@ export function Hero() {
             Made for the table
           </p>
           <h1 className="text-balance font-serif text-5xl font-medium leading-[1.08] tracking-tight text-paper md:text-6xl">
-            Feedback on every dish, not just the meal.
+            Feedback on every dish not just the meal.
           </h1>
           <p className="mt-6 max-w-md text-pretty text-lg leading-relaxed text-paper/70">
             Guests scan a QR code at the table, rate each dish they ordered, and
