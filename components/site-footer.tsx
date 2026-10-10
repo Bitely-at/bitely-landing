@@ -1,29 +1,41 @@
 import Link from 'next/link'
 
+import { LanguageSwitch } from '@/components/language-switch'
 import { Logo } from '@/components/ui/logo'
+import type { Dictionary } from '@/lib/dictionaries'
+import type { Locale } from '@/lib/i18n'
 
-const links = [
-  { href: '#how-it-works', label: 'How it works' },
-  { href: '#for-restaurants', label: 'For restaurants' },
-  { href: '#demo', label: 'Demo' },
-  { href: 'mailto:office@bitely.at', label: 'office@bitely.at' },
-]
+/* Labels for the first three come from the dictionary, in this order. */
+const linkHrefs = ['#how-it-works', '#for-restaurants', '#demo']
 
-export function SiteFooter() {
+export function SiteFooter({
+  locale,
+  dict,
+  languageLabel,
+}: {
+  locale: Locale
+  dict: Dictionary['footer']
+  languageLabel: string
+}) {
+  const links = [
+    ...linkHrefs.map((href, i) => ({ href, label: dict.links[i] })),
+    { href: 'mailto:office@bitely.at', label: 'office@bitely.at' },
+  ]
+
   return (
     <footer className="border-t border-border bg-background">
       <div className="mx-auto max-w-5xl px-6 py-12">
         <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           <Link
             href="#top"
-            aria-label="Bitely, back to top"
+            aria-label={dict.backToTop}
             className="transition-opacity hover:opacity-60"
           >
             <Logo className="h-6" />
           </Link>
 
           <nav
-            aria-label="Footer"
+            aria-label={dict.nav}
             className="flex flex-wrap gap-x-8 gap-y-3 text-sm text-muted-foreground"
           >
             {links.map((link) => (
@@ -40,8 +52,9 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-8 flex flex-col gap-2 border-t border-border pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <span>Powered by Bitely</span>
-          <span>&copy; {new Date().getFullYear()} Bitely. All rights reserved.</span>
+          <span>{dict.poweredBy}</span>
+          <LanguageSwitch locale={locale} label={languageLabel} className="-ml-1.5 sm:ml-0" />
+          <span>&copy; {new Date().getFullYear()} {dict.rights}</span>
         </div>
       </div>
     </footer>

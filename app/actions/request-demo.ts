@@ -6,6 +6,8 @@ import type {
 } from '@/lib/demo-request'
 import { LOCATION_OPTIONS } from '@/lib/demo-request'
 import { deliverDemoRequest } from '@/lib/demo-email'
+import { getDictionary } from '@/lib/dictionaries'
+import { defaultLocale, hasLocale } from '@/lib/i18n'
 
 
 /* Deliberately permissive: the only job here is to catch typos like a missing
@@ -27,6 +29,10 @@ export async function requestDemo(
     return { status: 'success' }
   }
 
+  const lang = read(formData, 'lang')
+  const locale = hasLocale(lang) ? lang : defaultLocale
+  const { demo } = getDictionary(locale)
+
   const values: DemoRequestValues = {
     name: read(formData, 'name'),
     restaurant: read(formData, 'restaurant'),
@@ -41,39 +47,39 @@ export async function requestDemo(
   const errors: DemoRequestState['errors'] = {}
 
   if (values.name.length < 2) {
-    errors.name = 'Please tell us your name.'
+    errors.name = demo.errors.name
   }
   if (values.restaurant.length < 2) {
-    errors.restaurant = 'Please tell us the name of your restaurant.'
+    errors.restaurant = demo.errors.restaurant
   }
   if (!values.email) {
-    errors.email = 'We need an email address to reach you.'
+    errors.email = demo.errors.emailMissing
   } else if (!EMAIL_PATTERN.test(values.email)) {
-    errors.email = 'That email address does not look right.'
+    errors.email = demo.errors.emailInvalid
   }
   if (values.phone && values.phone.replace(/[^0-9]/g, '').length < 6) {
-    errors.phone = 'That phone number looks too short.'
+    errors.phone = demo.errors.phone
   }
   if (!LOCATION_OPTIONS.includes(values.locations)) {
-    errors.locations = 'Please choose how many locations you run.'
+    errors.locations = demo.errors.locations
   }
   if (values.message.length > 2000) {
-    errors.message = 'Please keep this under 2000 characters.'
+    errors.message = demo.errors.message
   }
   if (!consent) {
-    errors.consent = 'We need your permission to get back to you.'
+    errors.consent = demo.errors.consent
   }
 
   if (Object.keys(errors).length > 0) {
     return {
       status: 'error',
-      message: 'Please check the highlighted fields.',
+      message: demo.errors.summary,
       errors,
       values,
     }
   }
 
-  const delivery = await deliverDemoRequest(values)
+  const delivery = await deliverDemoRequest(values, locale)
 
   if (!delivery.ok) {
     // Keep the lead in the server log so it is not lost while delivery is broken,
@@ -85,14 +91,13 @@ export async function requestDemo(
     })
     return {
       status: 'error',
-      message:
-        'Something went wrong sending your request. Please try again in a moment.',
+      message: demo.errors.delivery,
       values,
     }
   }
 
   return {
     status: 'success',
-    message: 'Your demo request is in.',
+    message: demo.received,
   }
 }

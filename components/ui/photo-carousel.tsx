@@ -25,6 +25,14 @@ type PhotoCarouselProps = {
   priority?: boolean
   className?: string
   label?: string
+  /** Button labels for screen readers. `show` takes {current} and {count}. */
+  labels?: { previous: string; next: string; show: string }
+}
+
+const defaultLabels = {
+  previous: 'Previous screenshot',
+  next: 'Next screenshot',
+  show: 'Show screenshot {current} of {count}',
 }
 
 const SWIPE_THRESHOLD = 60
@@ -36,6 +44,7 @@ export function PhotoCarousel({
   priority = false,
   className,
   label = 'App screenshots',
+  labels = defaultLabels,
 }: PhotoCarouselProps) {
   const [[index, direction], setSlide] = React.useState<[number, number]>([0, 0])
   const [isPaused, setIsPaused] = React.useState(false)
@@ -135,8 +144,8 @@ export function PhotoCarousel({
 
         {count > 1 && (
           <>
-            <CarouselButton side="left" onClick={prev} label="Previous screenshot" />
-            <CarouselButton side="right" onClick={next} label="Next screenshot" />
+            <CarouselButton side="left" onClick={prev} label={labels.previous} />
+            <CarouselButton side="right" onClick={next} label={labels.next} />
           </>
         )}
       </div>
@@ -156,7 +165,9 @@ export function PhotoCarousel({
                   key={item.src}
                   type="button"
                   onClick={() => go(i, i > index ? 1 : -1)}
-                  aria-label={`Show screenshot ${i + 1} of ${count}`}
+                  aria-label={labels.show
+                    .replace('{current}', String(i + 1))
+                    .replace('{count}', String(count))}
                   aria-current={i === index}
                   className={cn(
                     'h-1.5 rounded-full transition-all duration-300',

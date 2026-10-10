@@ -5,6 +5,7 @@
 import { Resend } from 'resend'
 
 import type { DemoRequestValues } from '@/lib/demo-request'
+import type { Locale } from '@/lib/i18n'
 
 const LOCATION_LABELS: Record<string, string> = {
   '1': 'A single location',
@@ -17,7 +18,7 @@ export type DeliveryResult =
   | { ok: true }
   | { ok: false; reason: string }
 
-function bodyText(values: DemoRequestValues): string {
+function bodyText(values: DemoRequestValues, locale: Locale): string {
   const locations = LOCATION_LABELS[values.locations] ?? values.locations
 
   return [
@@ -27,6 +28,7 @@ function bodyText(values: DemoRequestValues): string {
     values.phone ? `Phone:      ${values.phone}` : null,
     values.role ? `Role:       ${values.role}` : null,
     `Locations:  ${locations}`,
+    `Language:   ${locale.toUpperCase()}`,
     '',
     values.message ? `Message:\n${values.message}` : 'No message.',
     '',
@@ -40,6 +42,7 @@ function bodyText(values: DemoRequestValues): string {
    returned as { ok: false } so the caller can decide what the visitor sees. */
 export async function deliverDemoRequest(
   values: DemoRequestValues,
+  locale: Locale,
 ): Promise<DeliveryResult> {
   const apiKey = process.env.RESEND_API_KEY
   const to = process.env.DEMO_REQUEST_TO
@@ -59,7 +62,7 @@ export async function deliverDemoRequest(
       to,
       replyTo: values.email,
       subject: `Demo request: ${values.restaurant}`,
-      text: bodyText(values),
+      text: bodyText(values, locale),
     })
 
     if (error) {

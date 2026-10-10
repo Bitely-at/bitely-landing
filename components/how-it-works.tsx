@@ -1,42 +1,24 @@
 import { QrCode, Star, Coins, Ticket } from 'lucide-react'
 
-const steps = [
-  {
-    icon: QrCode,
-    title: 'Scan the QR code',
-    body: 'Guests scan the code on their table. No app to download, no account required.',
-  },
-  {
-    icon: Star,
-    title: 'Rate each dish',
-    body: 'They rate every item from their order individually, not just the visit as a whole.',
-  },
-  {
-    icon: Coins,
-    title: 'Earn points',
-    body: 'Optional sign-in banks loyalty points for the feedback they leave.',
-  },
-  {
-    icon: Ticket,
-    title: 'Redeem a voucher',
-    body: 'On a future visit, points turn into a voucher redeemed with a single swipe.',
-  },
-]
+import type { Dictionary } from '@/lib/dictionaries'
 
-export function HowItWorks() {
+/* One icon per step, in the same order as the steps in the dictionary. */
+const stepIcons = [QrCode, Star, Coins, Ticket]
+
+export function HowItWorks({ dict }: { dict: Dictionary['howItWorks'] }) {
   return (
     <section id="how-it-works" className="border-t border-border bg-background">
       <div className="mx-auto max-w-5xl px-6 py-16 md:py-32">
         <div className="max-w-2xl">
-          <p className="text-sm text-muted-foreground">How it works</p>
+          <p className="text-sm text-muted-foreground">{dict.eyebrow}</p>
           <h2 className="mt-3 text-balance text-4xl font-medium tracking-tight text-foreground lg:text-5xl">
-            From the table to a return visit, in four steps.
+            {dict.headline}
           </h2>
         </div>
 
         <ol className="mt-14 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
-          {steps.map((step, i) => {
-            const Icon = step.icon
+          {dict.steps.map((step, i) => {
+            const Icon = stepIcons[i]
             return (
               <li key={step.title} className="group">
                 <div className="flex items-center justify-between">

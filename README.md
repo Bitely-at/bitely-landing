@@ -37,10 +37,13 @@ pnpm build
 
 | Pfad | Inhalt |
 |---|---|
-| `app/` | Layout, Seite und Server Action für das Demo-Formular |
+| `app/[lang]/` | Layout und Seite, je einmal unter `/de` und `/en` |
+| `app/actions/` | Server Action für das Demo-Formular |
 | `components/` | Sektionen der Landingpage (Hero, How it works, …) |
 | `components/ui/` | Wiederverwendbare UI-Bausteine |
-| `lib/` | Hilfsfunktionen und Demo-Request-Logik |
+| `lib/dictionaries/` | Alle Texte der Seite, `de.ts` und `en.ts` |
+| `lib/` | Hilfsfunktionen, Sprachen (`i18n.ts`) und Demo-Request-Logik |
+| `proxy.ts` | Leitet `/` auf `/de` oder `/en` weiter (Cookie, sonst Browsersprache, sonst Deutsch) |
 | `public/` | Bilder, Logos, Icons |
 
 ## Hinweise

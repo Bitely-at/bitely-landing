@@ -4,7 +4,6 @@ import { useActionState } from 'react'
 import { AlertCircle, Check, Loader2 } from 'lucide-react'
 
 import { requestDemo } from '@/app/actions/request-demo'
-import { initialDemoRequestState } from '@/lib/demo-request'
 import {
   Field,
   FieldError,
@@ -13,16 +12,18 @@ import {
 } from '@/components/ui/field'
 import { Input, NativeSelect, Textarea } from '@/components/ui/input'
 import { buttonVariants } from '@/components/ui/button'
+import type { Dictionary } from '@/lib/dictionaries'
+import { LOCATION_OPTIONS, initialDemoRequestState } from '@/lib/demo-request'
+import type { Locale } from '@/lib/i18n'
 import { cn } from '@/lib/utils'
 
-const locationOptions = [
-  { value: '1', label: 'A single location' },
-  { value: '2-5', label: '2 to 5 locations' },
-  { value: '6-20', label: '6 to 20 locations' },
-  { value: '21+', label: '21+ locations' },
-]
-
-export function DemoForm() {
+export function DemoForm({
+  locale,
+  dict,
+}: {
+  locale: Locale
+  dict: Dictionary['demo']
+}) {
   const [state, formAction, isPending] = useActionState(
     requestDemo,
     initialDemoRequestState,
@@ -36,11 +37,10 @@ export function DemoForm() {
       <div className="mx-auto max-w-2xl px-6 py-16 md:py-32">
         <div className="text-center">
           <h2 className="text-balance text-4xl font-medium tracking-tight lg:text-5xl">
-            See Bitely on your own menu.
+            {dict.headline}
           </h2>
           <p className="mx-auto mt-4 max-w-md text-balance text-muted-foreground">
-            Tell us about your restaurant and we&apos;ll walk you through a live
-            dashboard built around your dishes.
+            {dict.intro}
           </p>
         </div>
 
@@ -49,14 +49,15 @@ export function DemoForm() {
             <span className="mx-auto flex size-10 items-center justify-center rounded-full border">
               <Check className="size-5" strokeWidth={1.5} aria-hidden="true" />
             </span>
-            <h3 className="mt-5 text-xl font-medium">Thank you.</h3>
+            <h3 className="mt-5 text-xl font-medium">{dict.successTitle}</h3>
             <p className="mx-auto mt-2 max-w-sm text-balance text-muted-foreground">
-              Your request is in. Someone from the Bitely team will be in touch
-              to schedule a walkthrough.
+              {dict.successBody}
             </p>
           </div>
         ) : (
           <form action={formAction} noValidate className="mt-12 grid gap-5">
+            <input type="hidden" name="lang" value={locale} />
+
             {state.status === 'error' && state.message && (
               <p
                 role="alert"
@@ -73,7 +74,7 @@ export function DemoForm() {
 
             <div className="grid gap-5 sm:grid-cols-2">
               <Field>
-                <FieldLabel htmlFor="name">Name</FieldLabel>
+                <FieldLabel htmlFor="name">{dict.fields.name}</FieldLabel>
                 <Input
                   {...fieldA11yProps('name', errors.name)}
                   autoComplete="name"
@@ -83,7 +84,7 @@ export function DemoForm() {
               </Field>
 
               <Field>
-                <FieldLabel htmlFor="restaurant">Restaurant</FieldLabel>
+                <FieldLabel htmlFor="restaurant">{dict.fields.restaurant}</FieldLabel>
                 <Input
                   {...fieldA11yProps('restaurant', errors.restaurant)}
                   autoComplete="organization"
@@ -97,7 +98,7 @@ export function DemoForm() {
 
             <div className="grid gap-5 sm:grid-cols-2">
               <Field>
-                <FieldLabel htmlFor="email">Email</FieldLabel>
+                <FieldLabel htmlFor="email">{dict.fields.email}</FieldLabel>
                 <Input
                   {...fieldA11yProps('email', errors.email)}
                   type="email"
@@ -109,14 +110,14 @@ export function DemoForm() {
               </Field>
 
               <Field>
-                <FieldLabel htmlFor="locations">Locations</FieldLabel>
+                <FieldLabel htmlFor="locations">{dict.fields.locations}</FieldLabel>
                 <NativeSelect
                   {...fieldA11yProps('locations', errors.locations)}
                   defaultValue={values.locations ?? '1'}
                 >
-                  {locationOptions.map((option) => (
-                    <option key={option.value} value={option.value}>
-                      {option.label}
+                  {LOCATION_OPTIONS.map((value) => (
+                    <option key={value} value={value}>
+                      {dict.locationOptions[value]}
                     </option>
                   ))}
                 </NativeSelect>
@@ -126,7 +127,7 @@ export function DemoForm() {
 
             <Field>
               <FieldLabel htmlFor="message" optional>
-                Anything we should know
+                {dict.fields.message}
               </FieldLabel>
               <Textarea
                 {...fieldA11yProps('message', errors.message)}
@@ -163,7 +164,7 @@ export function DemoForm() {
                   htmlFor="consent"
                   className="font-normal leading-relaxed text-muted-foreground"
                 >
-                  Bitely may contact me about this demo request.
+                  {dict.fields.consent}
                 </FieldLabel>
               </div>
               <FieldError id="consent-error">{errors.consent}</FieldError>
@@ -184,10 +185,10 @@ export function DemoForm() {
                     strokeWidth={2}
                     aria-hidden="true"
                   />
-                  Sending…
+                  {dict.sending}
                 </>
               ) : (
-                'Request a demo'
+                dict.submit
               )}
             </button>
           </form>
