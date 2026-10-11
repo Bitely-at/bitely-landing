@@ -16,7 +16,7 @@ Der vollständige inhaltliche Brief steht in [bitely-website-brief.md](./bitely-
 - **Tailwind CSS 4** + shadcn-Komponenten (`components/ui`)
 - **Framer Motion** für Animationen
 - **pnpm** als Paketmanager
-- Deployment über **Netlify** (`@netlify/plugin-nextjs`, Node 22)
+- Statischer Export (`output: 'export'`), Deployment über **GitHub Pages** (`.github/workflows/deploy.yml`, Node 22)
 
 ## Entwicklung
 
@@ -48,10 +48,12 @@ pnpm build
 
 ## Hinweise
 
-- `pnpm-workspace.yaml` setzt `nodeLinker: hoisted` — ohne das scheitert der Netlify-Build
-  unter Windows an Symlinks.
-- Das Demo-Formular nutzt eine Server Action, braucht also eine Server-Runtime.
-  Ein rein statischer Export (z. B. GitHub Pages) funktioniert damit nicht.
-- Die 301-Regeln in `netlify.toml` fangen die alten `bitely.at`-Pfade gedruckter
-  QR-Codes ab und leiten sie auf `app.bitely.at`. Sie dürfen weg, sobald alle
-  QR-Codes im Umlauf ersetzt sind.
+- Deployment: Push auf `main` baut `out/` und veröffentlicht es. Einmalig im Repo
+  Settings → Pages → Source auf „GitHub Actions“ stellen; Custom Domain `bitely.at`
+  (`public/CNAME`) und „Enforce HTTPS“ aktivieren.
+- Es gibt keine Server-Runtime: Das Demo-Formular ist ein `mailto:`-Link
+  (`components/demo-cta.tsx`).
+- `public/index.html` leitet `/` per JavaScript auf `/de` oder `/en` weiter (Browsersprache).
+- `public/404.html` (nach dem Build über `out/404.html` kopiert, weil Next sie sonst überschreibt) leitet die alten `bitely.at`-Pfade gedruckter QR-Codes
+  (`/:org/.../table/:n`, `/:org/staff`, `/:org/admin`) auf `app.bitely.at` weiter.
+  Darf weg, sobald alle QR-Codes ersetzt sind.

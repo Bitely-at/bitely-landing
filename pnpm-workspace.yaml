@@ -3,11 +3,3 @@
 # and asks, which fails CI.
 allowBuilds:
   msw: false
-
-minimumReleaseAgeExclude:
-  - resend@6.26.0
-
-# Windows darf ohne Developer Mode keine Symlinks anlegen, und @netlify/plugin-nextjs
-# kopiert node_modules samt Links in die Serverless-Funktion. Mit dem hoisted Linker
-# stehen dort echte Verzeichnisse, und der Deploy laeuft ohne Admin-Rechte durch.
-nodeLinker: hoisted

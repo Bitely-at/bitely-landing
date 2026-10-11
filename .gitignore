@@ -13,8 +13,9 @@ __v0_jsx-dev-runtime.ts
 node_modules
 .next/
 .DS_Store
-# netlify
-.netlify
 
 # build info
 tsconfig.tsbuildinfo
+
+# static export
+/out/

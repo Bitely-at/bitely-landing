@@ -141,39 +141,11 @@ export const en = {
     headline: 'See Bitely on your own menu.',
     intro:
       "Tell us about your restaurant and we'll walk you through a live dashboard built around your dishes.",
-    successTitle: 'Thank you.',
-    successBody:
-      'Your request is in. Someone from the Bitely team will be in touch to schedule a walkthrough.',
-    fields: {
-      name: 'Name',
-      restaurant: 'Restaurant',
-      email: 'Email',
-      locations: 'Locations',
-      message: 'Anything we should know',
-      consent: 'Bitely may contact me about this demo request.',
-    },
-    locationOptions: {
-      '1': 'A single location',
-      '2-5': '2 to 5 locations',
-      '6-20': '6 to 20 locations',
-      '21+': '21+ locations',
-    } as Record<string, string>,
-    submit: 'Request a demo',
-    sending: 'Sending…',
-    errors: {
-      name: 'Please tell us your name.',
-      restaurant: 'Please tell us the name of your restaurant.',
-      emailMissing: 'We need an email address to reach you.',
-      emailInvalid: 'That email address does not look right.',
-      phone: 'That phone number looks too short.',
-      locations: 'Please choose how many locations you run.',
-      message: 'Please keep this under 2000 characters.',
-      consent: 'We need your permission to get back to you.',
-      summary: 'Please check the highlighted fields.',
-      delivery:
-        'Something went wrong sending your request. Please try again in a moment.',
-    },
-    received: 'Your demo request is in.',
+    cta: 'Request a demo',
+    note: 'Opens your email app with a ready-made message to office@bitely.at.',
+    mailSubject: 'Demo request',
+    mailBody:
+      'Hello Bitely team,\n\nI would like to see a demo.\n\nName:\nRestaurant:\nNumber of locations:\nPhone (optional):\n',
   },
 
   footer: {

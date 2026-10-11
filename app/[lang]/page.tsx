@@ -6,7 +6,7 @@ import { ForGuests } from '@/components/for-guests'
 import { ForRestaurants } from '@/components/for-restaurants'
 import { MultiLocation } from '@/components/multi-location'
 import { WhyItemLevel } from '@/components/why-item-level'
-import { DemoForm } from '@/components/demo-form'
+import { DemoCta } from '@/components/demo-cta'
 import { SiteFooter } from '@/components/site-footer'
 import { getDictionary } from '@/lib/dictionaries'
 import { hasLocale } from '@/lib/i18n'
@@ -27,7 +27,7 @@ export default async function Page({ params }: PageProps<'/[lang]'>) {
         <ForRestaurants locale={lang} dict={dict.forRestaurants} />
         <MultiLocation dict={dict.multiLocation} />
         <WhyItemLevel dict={dict.why} />
-        <DemoForm locale={lang} dict={dict.demo} />
+        <DemoCta dict={dict.demo} />
       </main>
       <SiteFooter
         locale={lang}

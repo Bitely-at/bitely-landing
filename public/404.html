@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Bitely</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    // GitHub Pages cannot do 301s. Printed QR codes still carry the old
+    // bitely.at/<org>/... paths, so forward exactly those to app.bitely.at.
+    // Remove once all QR codes are replaced.
+    var p = location.pathname.replace(/\/+$/, '');
+    var old = /^\/[^\/]+(\/[^\/]+)?\/table\/[^\/]+$/.test(p) || /^\/[^\/]+\/(staff|admin)$/.test(p);
+    if (old) location.replace('https://app.bitely.at' + p + location.search + location.hash);
+  </script>
+</head>
+<body>
+  <h1>404</h1>
+  <p><a href="/de">Zur Startseite</a> | <a href="/en">Home</a></p>
+</body>
+</html>

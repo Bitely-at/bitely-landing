@@ -142,39 +142,11 @@ export const de: Dictionary = {
     headline: 'Bitely mit Ihrer eigenen Speisekarte erleben.',
     intro:
       'Erzählen Sie uns von Ihrem Restaurant und wir zeigen Ihnen ein Live-Dashboard rund um Ihre Gerichte.',
-    successTitle: 'Vielen Dank.',
-    successBody:
-      'Ihre Anfrage ist eingegangen. Jemand aus dem Bitely-Team meldet sich bei Ihnen, um einen Termin zu vereinbaren.',
-    fields: {
-      name: 'Name',
-      restaurant: 'Restaurant',
-      email: 'E-Mail',
-      locations: 'Standorte',
-      message: 'Was sollten wir noch wissen?',
-      consent: 'Bitely darf mich zu dieser Demo-Anfrage kontaktieren.',
-    },
-    locationOptions: {
-      '1': 'Ein Standort',
-      '2-5': '2 bis 5 Standorte',
-      '6-20': '6 bis 20 Standorte',
-      '21+': 'Mehr als 20 Standorte',
-    },
-    submit: 'Demo anfragen',
-    sending: 'Wird gesendet…',
-    errors: {
-      name: 'Bitte geben Sie Ihren Namen an.',
-      restaurant: 'Bitte geben Sie den Namen Ihres Restaurants an.',
-      emailMissing: 'Wir brauchen eine E-Mail-Adresse, um Sie zu erreichen.',
-      emailInvalid: 'Diese E-Mail-Adresse scheint nicht zu stimmen.',
-      phone: 'Diese Telefonnummer ist zu kurz.',
-      locations: 'Bitte wählen Sie aus, wie viele Standorte Sie betreiben.',
-      message: 'Bitte bleiben Sie unter 2000 Zeichen.',
-      consent: 'Wir brauchen Ihre Zustimmung, um uns bei Ihnen zu melden.',
-      summary: 'Bitte prüfen Sie die markierten Felder.',
-      delivery:
-        'Beim Senden Ihrer Anfrage ist etwas schiefgelaufen. Bitte versuchen Sie es gleich noch einmal.',
-    },
-    received: 'Ihre Demo-Anfrage ist eingegangen.',
+    cta: 'Demo anfragen',
+    note: 'Öffnet Ihr E-Mail-Programm mit einer vorbereiteten Nachricht an office@bitely.at.',
+    mailSubject: 'Demo-Anfrage',
+    mailBody:
+      'Hallo Bitely-Team,\n\nich möchte eine Demo sehen.\n\nName:\nRestaurant:\nAnzahl der Standorte:\nTelefon (optional):\n',
   },
 
   footer: {
