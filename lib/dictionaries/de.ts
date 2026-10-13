@@ -5,9 +5,9 @@ import type { Dictionary } from './en'
 
 export const de: Dictionary = {
   meta: {
-    title: 'Bitely: Feedback zu jedem Gericht statt nur zum ganzen Essen',
+    title: 'Bitely | Restaurant-Feedback pro Gericht per QR-Code',
     description:
-      'Mit Bitely scannen Gäste einen QR-Code, bewerten jedes Gericht einzeln und sammeln Treuepunkte. Betreiber sehen Bewertungen pro Gericht live und bekommen jede Woche eine KI-Zusammenfassung. Jetzt Demo anfragen.',
+      'Gäste scannen einen QR-Code, bewerten jedes Gericht einzeln und sammeln Treuepunkte. Sie sehen live, welche Teller überzeugen. Jetzt Demo anfragen.',
   },
 
   nav: {

@@ -3,9 +3,9 @@
 
 export const en = {
   meta: {
-    title: 'Bitely: Feedback on every dish not just the meal',
+    title: 'Bitely | Per-Dish Restaurant Feedback via QR Code',
     description:
-      'Bitely lets restaurant guests scan a QR code, rate individual dishes, and earn loyalty points, while owners get live per-dish ratings and AI weekly insights. Request a demo.',
+      'Guests scan a QR code, rate each dish and earn loyalty points. You see live per-dish ratings and get weekly AI insights. Request a demo.',
   },
 
   nav: {

@@ -4,6 +4,7 @@ import '../globals.css'
 
 import { getDictionary } from '@/lib/dictionaries'
 import { defaultLocale, hasLocale, locales } from '@/lib/i18n'
+import { ogLocales, siteName, siteUrl } from '@/lib/site'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -21,13 +22,15 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: LayoutProps<'/[lang]'>): Promise<Metadata> {
-  const { lang } = await params
-  const dict = getDictionary(hasLocale(lang) ? lang : defaultLocale)
+  const { lang: raw } = await params
+  const lang = hasLocale(raw) ? raw : defaultLocale
+  const dict = getDictionary(lang)
 
   return {
+    metadataBase: new URL(siteUrl),
     title: dict.meta.title,
     description: dict.meta.description,
-    generator: 'v0.app',
+    applicationName: siteName,
     alternates: {
       canonical: `/${lang}`,
       languages: {
@@ -36,6 +39,23 @@ export async function generateMetadata({
         'x-default': '/',
       },
     },
+    openGraph: {
+      type: 'website',
+      siteName,
+      url: `/${lang}`,
+      title: dict.meta.title,
+      description: dict.meta.description,
+      locale: ogLocales[lang],
+      alternateLocale: locales
+        .filter((other) => other !== lang)
+        .map((other) => ogLocales[other]),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: dict.meta.title,
+      description: dict.meta.description,
+    },
+    robots: { index: true, follow: true },
   }
 }
 

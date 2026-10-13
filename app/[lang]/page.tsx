@@ -10,6 +10,7 @@ import { DemoCta } from '@/components/demo-cta'
 import { SiteFooter } from '@/components/site-footer'
 import { getDictionary } from '@/lib/dictionaries'
 import { hasLocale } from '@/lib/i18n'
+import { contactEmail, siteName, siteUrl } from '@/lib/site'
 
 export default async function Page({ params }: PageProps<'/[lang]'>) {
   const { lang } = await params
@@ -17,8 +18,48 @@ export default async function Page({ params }: PageProps<'/[lang]'>) {
 
   const dict = getDictionary(lang)
 
+  /* Tells search engines who runs the site and what Bitely is, so results can
+     show the brand, logo and product details. */
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': `${siteUrl}/#organization`,
+        name: siteName,
+        url: siteUrl,
+        logo: `${siteUrl}/images/logo-bitely-wordmark.png`,
+        email: contactEmail,
+      },
+      {
+        '@type': 'WebSite',
+        '@id': `${siteUrl}/#website`,
+        url: siteUrl,
+        name: siteName,
+        inLanguage: ['de', 'en'],
+        publisher: { '@id': `${siteUrl}/#organization` },
+      },
+      {
+        '@type': 'SoftwareApplication',
+        name: siteName,
+        url: `${siteUrl}/${lang}`,
+        description: dict.meta.description,
+        inLanguage: lang,
+        applicationCategory: 'BusinessApplication',
+        operatingSystem: 'Web',
+        publisher: { '@id': `${siteUrl}/#organization` },
+      },
+    ],
+  }
+
   return (
     <div className="bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c'),
+        }}
+      />
       <HeroHeader locale={lang} dict={dict.nav} />
       <main>
         <HeroSection dict={dict.hero} carousel={dict.carousel} />
