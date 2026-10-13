@@ -25,6 +25,13 @@ export async function generateMetadata({
   const { lang: raw } = await params
   const lang = hasLocale(raw) ? raw : defaultLocale
   const dict = getDictionary(lang)
+  // Rendered by app/[lang]/og.png/route.tsx.
+  const ogImage = {
+    url: `/${lang}/og.png`,
+    width: 1200,
+    height: 630,
+    alt: siteName,
+  }
 
   return {
     metadataBase: new URL(siteUrl),
@@ -49,11 +56,13 @@ export async function generateMetadata({
       alternateLocale: locales
         .filter((other) => other !== lang)
         .map((other) => ogLocales[other]),
+      images: [ogImage],
     },
     twitter: {
       card: 'summary_large_image',
       title: dict.meta.title,
       description: dict.meta.description,
+      images: [ogImage],
     },
     robots: { index: true, follow: true },
   }

@@ -3,20 +3,28 @@ import { join } from 'node:path'
 import { readFile } from 'node:fs/promises'
 
 import { getDictionary } from '@/lib/dictionaries'
-import { defaultLocale, hasLocale } from '@/lib/i18n'
+import { defaultLocale, hasLocale, locales } from '@/lib/i18n'
 
 /* The preview card shown when someone shares /de or /en on WhatsApp,
-   LinkedIn, Slack and the like. Twitter/X falls back to it as well. */
+   LinkedIn, Slack and the like. A route handler rather than the
+   opengraph-image convention, because the static export would write that one
+   without a file extension, and GitHub Pages would then serve it as
+   application/octet-stream, which social crawlers reject. This one lands in
+   out/<lang>/og.png. The layout's openGraph.images points here. */
 
-export const alt = 'Bitely'
-export const size = { width: 1200, height: 630 }
-export const contentType = 'image/png'
+const size = { width: 1200, height: 630 }
 
-export default async function Image({
-  params,
-}: {
-  params: Promise<{ lang: string }>
-}) {
+export const dynamic = 'force-static'
+
+/* Static export: render one image per language at build time. */
+export function generateStaticParams() {
+  return locales.map((lang) => ({ lang }))
+}
+
+export async function GET(
+  _request: Request,
+  { params }: { params: Promise<{ lang: string }> },
+) {
   const { lang } = await params
   const logoData = await readFile(
     join(process.cwd(), 'public/images/logo-bitely-wordmark-light.png'),
