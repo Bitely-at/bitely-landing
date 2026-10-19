@@ -10,11 +10,14 @@ export function LanguageSwitch({
   label,
   className,
   onNavigate,
+  path = '',
 }: {
   locale: Locale
   label: string
   className?: string
   onNavigate?: () => void
+  /* Sub-page to stay on when switching, e.g. '/datenschutz'. */
+  path?: string
 }) {
   return (
     <nav
@@ -29,7 +32,7 @@ export function LanguageSwitch({
             </span>
           )}
           <Link
-            href={`/${code}`}
+            href={`/${code}${path}`}
             hrefLang={code}
             lang={code}
             title={localeNames[code]}

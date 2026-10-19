@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>Bitely</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://bitely.at/de/datenschutz">
+  <noscript><meta http-equiv="refresh" content="0; url=/de/datenschutz"></noscript>
+  <script>
+    // Static replacement for the old proxy.ts: pick the language from the browser, default German.
+    var langs = navigator.languages || [navigator.language || 'de'];
+    var target = 'de';
+    for (var i = 0; i < langs.length; i++) {
+      var l = String(langs[i]).toLowerCase().split('-')[0];
+      if (l === 'de' || l === 'en') { target = l; break; }
+    }
+    location.replace('/' + target + '/datenschutz' + location.search + location.hash);
+  </script>
+</head>
+<body><p><a href="/de/datenschutz">Deutsch</a> | <a href="/en/datenschutz">English</a></p></body>
+</html>
