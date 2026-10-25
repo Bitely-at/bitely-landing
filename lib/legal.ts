@@ -7,8 +7,8 @@ import type { Locale } from '@/lib/i18n'
    without a postal address are not compliant and must not go live. */
 export const operator = {
   name: 'Alexander Si',
-  street: '',
-  city: '',
+  street: 'Doningasse 12/2/25',
+  city: '1220 Wien',
   country: { de: 'Österreich', en: 'Austria' },
   email: 'office@bitely.at',
 }
