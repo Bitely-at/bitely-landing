@@ -1,13 +1,18 @@
 import type { Dictionary } from './en'
 
 /* German copy. Addresses restaurant owners with "Sie", the norm for B2B in
-   Austria and Germany. Must match the shape of en.ts. */
+   Austria and Germany. Must match the shape of en.ts.
+
+   Style: plain statements and concrete facts about the product. No
+   "nicht X, sondern Y" contrasts, no slogans built from repeated words, and
+   lists only as long as the facts they carry. Every claim must hold up
+   against the app and the legal pages in lib/legal.ts. */
 
 export const de: Dictionary = {
   meta: {
     title: 'Bitely | Restaurant-Feedback pro Gericht per QR-Code',
     description:
-      'Gäste scannen einen QR-Code, bewerten jedes Gericht einzeln und sammeln Treuepunkte. Sie sehen live, welche Teller überzeugen. Jetzt Demo anfragen.',
+      'Gäste bewerten per QR-Code jedes Gericht einzeln, ohne App und ohne Konto. Im Dashboard sehen Sie, wie jedes Gericht abschneidet.',
   },
 
   nav: {
@@ -21,24 +26,24 @@ export const de: Dictionary = {
   },
 
   hero: {
-    announcement: 'Neu: jeden Montag eine KI-Auswertung zu jedem Gericht',
-    headline: 'Feedback zu jedem Gericht statt nur zum ganzen Essen.',
+    announcement: 'Neu: jeden Montag ein KI-Wochenrückblick',
+    headline: 'Ihre Gäste bewerten jedes Gericht einzeln.',
     intro:
-      'Gäste scannen am Tisch einen QR-Code, bewerten jedes bestellte Gericht und sammeln Treuepunkte. Sie sehen dabei genau, welche Teller überzeugen und wo nachgebessert werden muss.',
+      'Der QR-Code am Tisch öffnet eine Bewertungsseite mit ein bis fünf Sternen pro Gericht. Die Ergebnisse sehen Sie im Dashboard, sobald ein Tisch bewertet hat.',
     primaryCta: 'Demo anfragen',
     secondaryCta: 'So funktioniert’s',
     carouselLabel: 'Screenshots der Bitely-App',
     screens: [
       {
         alt: 'Das Bitely-Dashboard: Durchschnittsbewertung, Bewertungen im Zeitverlauf und die besten und schwächsten Gerichte im Ranking',
-        caption: 'Live-Bewertungen für jedes einzelne Gericht',
+        caption: 'Dashboard der Bitely-App mit Beispieldaten',
       },
     ],
     proofPoints: [
       'Keine App nötig',
-      'Bewertung pro Gericht',
-      'Wöchentliche KI-Auswertung',
-      'Treuepunkte inklusive',
+      'Ohne Kassenanbindung',
+      'Für mehrere Filialen',
+      'Treuepunkte für Gäste',
     ],
     flowLink: 'Den ganzen Ablauf ansehen',
   },
@@ -55,49 +60,54 @@ export const de: Dictionary = {
     steps: [
       {
         title: 'QR-Code scannen',
-        body: 'Gäste scannen den Code auf ihrem Tisch. Keine App, kein Konto nötig.',
+        body: 'Auf jedem Tisch steht ein QR-Code. Er öffnet die Bewertung direkt im Browser.',
       },
       {
-        title: 'Jedes Gericht bewerten',
-        body: 'Jedes bestellte Gericht wird einzeln bewertet und nicht bloß der Besuch als Ganzes.',
+        title: 'Gerichte bewerten',
+        body: 'Gäste sehen die Gerichte ihrer Bestellung und vergeben für jedes einzeln Sterne.',
       },
       {
         title: 'Punkte sammeln',
-        body: 'Wer sich anmeldet, bekommt für sein Feedback Treuepunkte gutgeschrieben.',
+        body: 'Wer ein Konto hat, bekommt für jede Bewertung Treuepunkte.',
       },
       {
         title: 'Gutschein einlösen',
-        body: 'Beim nächsten Besuch werden die Punkte zum Gutschein, eingelöst mit einem Wisch.',
+        body: 'Beim nächsten Besuch tauschen Gäste ihre Punkte gegen einen Gutschein Ihres Lokals.',
       },
     ],
   },
 
   forGuests: {
     eyebrow: 'Für Gäste',
-    headline: 'Erledigt, bevor der Kaffee kommt.',
+    headline: 'Ohne App und ohne Anmeldung.',
     intro:
-      'Bitely nimmt Rücksicht auf die Zeit Ihrer Gäste. Eine Bewertung dauert Sekunden, die Belohnung sammelt sich ganz nebenbei.',
+      'Gäste tippen pro Gericht die Sterne an. Wer möchte, schreibt noch eine Anmerkung dazu.',
     imageAlt: 'Ein Gast scannt am Restauranttisch mit dem Handy einen QR-Code',
     points: [
       {
-        label: 'Kein Konto nötig',
-        body: 'Gäste geben sofort nach dem Scan Feedback zu jedem Gericht. Ohne Hürden und ohne Registrierung.',
+        label: 'Konto nur für Punkte',
+        body: 'Wer Treuepunkte sammeln will, meldet sich mit E-Mail oder Google an. Das Konto gilt in allen Lokalen mit Bitely, die Punkte nur im Lokal, in dem sie gesammelt wurden.',
       },
       {
-        label: 'Optionale Anmeldung für Punkte',
-        body: 'Mit einer kurzen Anmeldung per E-Mail oder Google bleiben die Treuepunkte gespeichert und das Feedback wird beim nächsten Besuch belohnt.',
+        label: 'Punkte unabhängig von den Sternen',
+        body: 'Wie viele Punkte es gibt, hängt vom Preis der bewerteten Gerichte ab. Eine schlechte Bewertung bringt genauso viele Punkte wie eine gute.',
       },
       {
-        label: 'Sofort und endgültig eingelöst',
-        body: 'Gutscheine werden direkt vor Ort eingelöst. Der Gast zeigt einen Code, das Personal trägt den Betrag ein. Einmal erledigt, für immer erledigt.',
+        label: 'Anonym für das Restaurant',
+        body: 'Sie sehen Sterne und Anmerkungen, aber weder Namen noch E-Mail-Adressen der Gäste.',
+      },
+      {
+        label: 'Einlösen vor Ort',
+        body: 'Der Gast zeigt einen Code, Ihr Personal trägt den Betrag ein. Danach ist der Gutschein verbraucht.',
       },
     ],
   },
 
   forRestaurants: {
     eyebrow: 'Für Restaurants',
-    headline: 'Ein Live-Dashboard, das jedes Gericht beim Namen nennt.',
+    headline: 'Im Dashboard hat jedes Gericht seine eigene Bewertung.',
     dashboardTitle: 'Bewertungen dieser Woche',
+    sample: 'Beispieldaten',
     reviews: '412 Bewertungen',
     dishes: [
       'Gebratene Jakobsmuscheln',
@@ -106,21 +116,21 @@ export const de: Dictionary = {
       'Trüffel-Tagliatelle',
       'Zitronentarte',
     ],
-    highlightTitle: 'KI-Wochenhighlight',
+    highlightTitle: 'KI-Wochenrückblick',
     highlightBody:
-      'Die Jakobsmuscheln sind wieder Ihr Spitzenreiter. Die Zitronentarte ist auf 2,4 gefallen und drei Gäste fanden sie zu süß. Ein Blick darauf lohnt sich noch vor dem Wochenende.',
+      'Die Jakobsmuscheln liegen wie in der Vorwoche vorne, mit 4,8 Sternen. Die Zitronentarte ist auf 2,4 Sterne gefallen, drei Gäste fanden sie zu süß.',
     features: [
       {
-        title: 'Bewertungen pro Gericht',
-        body: 'Sehen Sie genau, welche Gerichte schwächeln, statt eines verwaschenen Durchschnitts für den ganzen Besuch.',
+        title: 'Bewertung pro Gericht',
+        body: 'Das Dashboard reiht Ihre Gerichte nach der Durchschnittsbewertung und zeigt, wie oft jedes bewertet wurde. Den Zeitraum wählen Sie selbst.',
       },
       {
-        title: 'Wöchentliche KI-Zusammenfassung',
-        body: 'Jeden Montag eine verständliche Übersicht: was Gäste begeistert hat, was nachgelassen hat und wo Sie ansetzen sollten.',
+        title: 'KI-Wochenrückblick',
+        body: 'Jeden Montag fasst eine KI die Bewertungen und Anmerkungen der Vorwoche in ein paar Sätzen zusammen.',
       },
       {
-        title: 'Bestellung per Rechnungs-Scan',
-        body: 'Das Personal scannt die Rechnung, um die Bestellung anzulegen. Nach der Bewertung setzt sich der Tisch automatisch zurück.',
+        title: 'Bestellung per Kassenbon',
+        body: 'Ihr Personal fotografiert den Kassenbon und Bitely erkennt die bestellten Gerichte. Eine Anbindung an Ihre Kasse ist nicht nötig. Nach der Bewertung wird der Tisch automatisch freigegeben.',
       },
     ],
   },
@@ -128,20 +138,20 @@ export const de: Dictionary = {
   multiLocation: {
     eyebrow: 'Mehrere Standorte',
     headline: 'Für ein einzelnes Lokal oder eine ganze Gruppe.',
-    body: 'Jeder Standort behält seine eigene Tischnummerierung, sein Branding und seine Speisekarte und fließt trotzdem in eine gemeinsame Übersicht ein. Betreiber vergleichen ihre Standorte auf einen Blick, jedes Lokal führt seinen Betrieb weiter selbst.',
+    body: 'Jeder Standort hat eigene Tischnummern, eine eigene Speisekarte und ein eigenes Branding. Im Dashboard sehen Sie alle Filialen zusammen oder wählen eine einzelne aus.',
   },
 
   why: {
     eyebrow: 'Warum Feedback pro Gericht',
     quote:
-      'Vier Sterne für den Abend sagen Ihnen, dass der Tisch zufrieden gegangen ist. Sie sagen nicht, dass die Tarte zu süß war, die Pasta kalt ankam und die Jakobsmuscheln der einzige Grund sind, warum die Gäste wiederkommen.',
-    body: 'Durchschnittswerte verstecken das Problem. Bitely zeigt auf genau das Gericht, das Sie verbessern sollten.',
+      'Ein Tisch gibt dem Abend vier Sterne. Dass die Tarte zu süß war und die Pasta lauwarm, steht in dieser Note nicht.',
+    body: 'Mit einer Bewertung pro Gericht sehen Sie, welcher Teller die Note nach unten zieht.',
   },
 
   demo: {
-    headline: 'Bitely mit Ihrer eigenen Speisekarte erleben.',
+    headline: 'Eine Demo mit Ihrer eigenen Speisekarte.',
     intro:
-      'Erzählen Sie uns von Ihrem Restaurant und wir zeigen Ihnen ein Live-Dashboard rund um Ihre Gerichte.',
+      'Schreiben Sie uns, welches Restaurant Sie führen. Wir richten ein Dashboard mit Ihren Gerichten ein und gehen es mit Ihnen durch.',
     cta: 'Demo anfragen',
     note: 'Öffnet Ihr E-Mail-Programm mit einer vorbereiteten Nachricht an office@bitely.at.',
     mailSubject: 'Demo-Anfrage',
@@ -153,7 +163,6 @@ export const de: Dictionary = {
     links: ['So funktioniert’s', 'Für Restaurants', 'Demo'],
     backToTop: 'Bitely, zurück nach oben',
     nav: 'Fußzeile',
-    poweredBy: 'Powered by Bitely',
     rights: 'Bitely. Alle Rechte vorbehalten.',
   },
 }

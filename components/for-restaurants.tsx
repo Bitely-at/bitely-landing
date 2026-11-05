@@ -33,9 +33,13 @@ export function ForRestaurants({
         <div className="mt-14 grid gap-10 lg:grid-cols-2 lg:gap-14">
           {/* Dashboard mockup */}
           <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-            <div className="flex items-center justify-between border-b border-border px-6 py-4">
-              <p className="text-base font-medium text-foreground">{dict.dashboardTitle}</p>
-              <span className="text-sm text-muted-foreground">{dict.reviews}</span>
+            <div className="flex items-center justify-between gap-4 border-b border-border px-6 py-4">
+              <div>
+                <p className="text-base font-medium text-foreground">{dict.dashboardTitle}</p>
+                {/* The numbers are made up, so say so. */}
+                <p className="text-xs text-muted-foreground">{dict.sample}</p>
+              </div>
+              <span className="shrink-0 text-sm text-muted-foreground">{dict.reviews}</span>
             </div>
 
             <div className="space-y-4 px-6 py-6">

@@ -56,7 +56,6 @@ export function SiteFooter({
         </div>
 
         <div className="mt-8 flex flex-col gap-2 border-t border-border pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <span>{dict.poweredBy}</span>
           <nav aria-label={dict.nav} className="flex flex-wrap gap-x-5 gap-y-1">
             {legalSlugs.map((slug) => (
               <Link key={slug} href={`/${locale}/${slug}`} className="transition-colors hover:text-foreground">

@@ -6,10 +6,10 @@ import {
     ArrowRight,
     ChevronRight,
     Coins,
-    LayoutGrid,
     Menu,
     QrCode,
-    Sparkles,
+    ReceiptText,
+    Store,
     X,
 } from 'lucide-react'
 import type { Variants } from 'framer-motion'
@@ -174,7 +174,7 @@ export function HeroSection({
                 Swap in real customer logos here once they exist. */}
             <section className="bg-background pb-16 pt-16 md:pb-24">
                 <div className="m-auto max-w-5xl px-5 md:px-8">
-                    <div className="mx-auto grid max-w-3xl grid-cols-2 gap-x-12 gap-y-8 sm:grid-cols-4 sm:gap-x-16">
+                    <div className="mx-auto grid max-w-4xl grid-cols-2 gap-x-12 gap-y-8 sm:grid-cols-4 sm:gap-x-16">
                         {points.map((point) => {
                             const Icon = point.icon
                             return (
@@ -217,10 +217,11 @@ const appScreens = [
     },
 ]
 
+/* One icon per label in dict.hero.proofPoints, same order. */
 const proofPoints = [
     { icon: QrCode },
-    { icon: LayoutGrid },
-    { icon: Sparkles },
+    { icon: ReceiptText },
+    { icon: Store },
     { icon: Coins },
 ]
 

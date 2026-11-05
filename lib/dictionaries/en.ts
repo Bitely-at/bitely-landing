@@ -1,17 +1,22 @@
 /* English copy. This file defines the shape every other language must match:
-   lists line up by position with the icons and data in the components. */
+   lists line up by position with the icons and data in the components.
+
+   Style: plain statements and concrete facts about the product. No
+   "not X, but Y" contrasts, no slogans built from repeated words, and lists
+   only as long as the facts they carry. Every claim must hold up against the
+   app and the legal pages in lib/legal.ts. */
 
 export const en = {
   meta: {
     title: 'Bitely | Per-Dish Restaurant Feedback via QR Code',
     description:
-      'Guests scan a QR code, rate each dish and earn loyalty points. You see live per-dish ratings and get weekly AI insights. Request a demo.',
+      'Guests rate every dish separately via a QR code, with no app and no account. Your dashboard shows how each dish is doing.',
   },
 
   nav: {
-    home: 'home',
-    openMenu: 'Open Menu',
-    closeMenu: 'Close Menu',
+    home: 'Home',
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
     items: ['How it works', 'For guests', 'For restaurants', 'Why Bitely'],
     howItWorks: 'How it works',
     requestDemo: 'Request a demo',
@@ -19,24 +24,24 @@ export const en = {
   },
 
   hero: {
-    announcement: 'New: an AI recap of every dish, every Monday',
-    headline: 'Feedback on every dish not just the meal.',
+    announcement: 'New: an AI weekly recap every Monday',
+    headline: 'Your guests rate every dish separately.',
     intro:
-      'Guests scan a QR code at the table, rate each dish they ordered, and earn loyalty points. Meanwhile you see exactly which plates are winning and which need work.',
+      'The QR code on the table opens a rating page with one to five stars per dish. You see the results in your dashboard as soon as a table has rated.',
     primaryCta: 'Request a demo',
     secondaryCta: 'See how it works',
     carouselLabel: 'Bitely product screenshots',
     screens: [
       {
         alt: 'The Bitely dashboard: average rating, ratings over time, and the best and weakest dishes ranked',
-        caption: 'Live per-dish ratings, named plate by plate',
+        caption: 'The Bitely dashboard with sample data',
       },
     ],
     proofPoints: [
-      'No app to download',
-      'Per-dish ratings',
-      'AI weekly recap',
-      'Loyalty points built in',
+      'No app needed',
+      'No POS integration',
+      'For multiple locations',
+      'Loyalty points for guests',
     ],
     flowLink: 'See the whole flow',
   },
@@ -54,49 +59,53 @@ export const en = {
     steps: [
       {
         title: 'Scan the QR code',
-        body: 'Guests scan the code on their table. No app to download, no account required.',
+        body: 'Every table has a QR code. It opens the rating page right in the browser.',
       },
       {
-        title: 'Rate each dish',
-        body: 'They rate every item from their order individually, not just the visit as a whole.',
+        title: 'Rate the dishes',
+        body: 'Guests see the dishes from their order and give each one its own stars.',
       },
       {
         title: 'Earn points',
-        body: 'Optional sign-in banks loyalty points for the feedback they leave.',
+        body: 'Guests with an account earn loyalty points for every rating.',
       },
       {
         title: 'Redeem a voucher',
-        body: 'On a future visit, points turn into a voucher redeemed with a single swipe.',
+        body: 'On their next visit, guests trade their points for a voucher from your restaurant.',
       },
     ],
   },
 
   forGuests: {
     eyebrow: 'For guests',
-    headline: 'Fast enough to finish before the coffee arrives.',
-    intro:
-      "Bitely is built around the guest's time. Rating dishes takes seconds, and rewards accrue quietly in the background.",
+    headline: 'No app and no sign-up.',
+    intro: 'Guests tap the stars for each dish. If they want, they add a comment.',
     imageAlt: 'A guest scanning a QR code at a restaurant table with their phone',
     points: [
       {
-        label: 'No account required',
-        body: 'Guests can leave dish-by-dish feedback the moment they scan. Zero friction, zero sign-up wall.',
+        label: 'An account only for points',
+        body: 'Guests who want loyalty points sign in with email or Google. The account works at every restaurant on Bitely, and points count only where they were earned.',
       },
       {
-        label: 'Optional sign-in to bank points',
-        body: 'A quick email or Google sign-in saves loyalty points, so feedback is rewarded on the next visit.',
+        label: 'Points regardless of stars',
+        body: 'The number of points depends on the price of the dishes rated. A poor rating earns as many points as a good one.',
       },
       {
-        label: 'Instant, irreversible redemption',
-        body: 'Vouchers are redeemed on the spot. The guest shows a code and staff enter the payout. Done once, done for good.',
+        label: 'Anonymous to the restaurant',
+        body: "You see stars and comments, but not the guests' names or email addresses.",
+      },
+      {
+        label: 'Redeemed on site',
+        body: 'The guest shows a code and your staff enter the amount. After that the voucher is used up.',
       },
     ],
   },
 
   forRestaurants: {
     eyebrow: 'For restaurants',
-    headline: 'A live dashboard that names the dish, not just the score.',
+    headline: 'In the dashboard, every dish has its own rating.',
     dashboardTitle: "This week's dish ratings",
+    sample: 'Sample data',
     reviews: '412 reviews',
     dishes: [
       'Seared Scallops',
@@ -105,42 +114,42 @@ export const en = {
       'Truffle tagliatelle',
       'Lemon tart',
     ],
-    highlightTitle: 'AI weekly highlight',
+    highlightTitle: 'AI weekly recap',
     highlightBody:
-      'Scallops are your standout again. The lemon tart dropped to 2.4, and three guests flagged it as too sweet. Worth a look before the weekend.',
+      'The scallops are in the lead again, at 4.8 stars. The lemon tart dropped to 2.4 stars, and three guests found it too sweet.',
     features: [
       {
-        title: 'Per-dish rating breakdown',
-        body: 'See exactly which items are underperforming, not a single blurred average for the whole visit.',
+        title: 'Ratings per dish',
+        body: 'The dashboard ranks your dishes by average rating and shows how often each one was rated. You choose the time period.',
       },
       {
-        title: 'AI weekly highlight summary',
-        body: 'Every Monday, a plain-English recap of what guests loved, what slipped, and what to act on.',
+        title: 'AI weekly recap',
+        body: "Every Monday, an AI sums up the past week's ratings and comments in a few sentences.",
       },
       {
-        title: 'Receipt-scan order entry',
-        body: 'Staff scan a receipt to seed the order, and the table auto-resets once the guest has rated.',
+        title: 'Orders from the receipt',
+        body: 'Your staff take a photo of the receipt and Bitely recognises the dishes ordered. You do not need to connect your POS system. Once the guest has rated, the table resets automatically.',
       },
     ],
   },
 
   multiLocation: {
     eyebrow: 'Multi-location',
-    headline: 'Built for a single location, or a whole group.',
-    body: 'Every location keeps its own table numbering, branding, and menu availability, then rolls up into one chain-wide view. Owners compare sites at a glance; each venue still runs its own floor.',
+    headline: 'For a single restaurant or a whole group.',
+    body: 'Each location has its own table numbers, menu and branding. In the dashboard you look at all branches together or pick one.',
   },
 
   why: {
     eyebrow: 'Why item-level feedback',
     quote:
-      "A four-star meal tells you the table left happy. It doesn't tell you the tart was too sweet, the pasta arrived cold, and the scallops are the only reason they'll come back.",
-    body: 'Averages hide the problem. Bitely points at the exact dish to fix.',
+      "A table gives the evening four stars. The score doesn't say that the tart was too sweet and the pasta lukewarm.",
+    body: 'With a rating for each dish, you can see which plate is pulling the score down.',
   },
 
   demo: {
-    headline: 'See Bitely on your own menu.',
+    headline: 'A demo with your own menu.',
     intro:
-      "Tell us about your restaurant and we'll walk you through a live dashboard built around your dishes.",
+      "Tell us which restaurant you run. We'll set up a dashboard with your dishes and walk you through it.",
     cta: 'Request a demo',
     note: 'Opens your email app with a ready-made message to office@bitely.at.',
     mailSubject: 'Demo request',
@@ -152,7 +161,6 @@ export const en = {
     links: ['How it works', 'For restaurants', 'Demo'],
     backToTop: 'Bitely, back to top',
     nav: 'Footer',
-    poweredBy: 'Powered by Bitely',
     rights: 'Bitely. All rights reserved.',
   },
 }
